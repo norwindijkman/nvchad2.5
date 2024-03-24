@@ -5,12 +5,24 @@
 local M = {}
 
 M.ui = {
-	theme = "onedark",
+	theme = "ayu_dark",
 
-	-- hl_override = {
-	-- 	Comment = { italic = true },
-	-- 	["@comment"] = { italic = true },
-	-- },
+  statusline = {
+    theme = "minimal",
+    order = { "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "lsp" },
+  },
+
+	hl_override = {
+		Comment = { italic = true },
+		["@comment"] = { italic = true },
+    Visual = {
+      bg = "#453b4a",
+      fg = "#FFFFFF",
+    },
+    Normal = {
+      bg = "#000000",
+    },
+	},
 }
 
 return M

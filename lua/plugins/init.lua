@@ -7,24 +7,105 @@ return {
     end,
   },
 
-  -- These are some examples, uncomment them if you want to see them work!
-  -- {
-  --   "neovim/nvim-lspconfig",
-  --   config = function()
-  --     require("nvchad.configs.lspconfig").defaults()
-  --     require "configs.lspconfig"
-  --   end,
-  -- },
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    event = "VeryLazy",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      local harpoon = require("harpoon")
+      harpoon:setup({})
+    end,
+  },
 
-  -- {
-  -- 	"williamboman/mason.nvim",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"lua-language-server", "stylua",
-  -- 			"html-lsp", "css-lsp" , "prettier"
-  -- 		},
-  -- 	},
-  -- },
+  {
+    "lewis6991/gitsigns.nvim",
+    event = "User FilePost",
+    opts = function()
+      local conf = require "nvchad.configs.gitsigns"
+      conf.signs = {
+        add = { text = "󰙴" },
+        change = { text = "󰏫" },
+        delete = { text = "-" },
+        topdelete = { text = "‾" },
+        changedelete = { text = "~" },
+        untracked = { text = "󰙴" },
+      }
+    end,
+  },
+
+  {
+  	"nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim",
+        "lua",
+        "html",
+        "css",
+        "javascript",
+        "typescript",
+        "svelte",
+        "tsx",
+        "c",
+        "php",
+        "markdown",
+        "markdown_inline",
+        "dart"
+      },
+      indent = {
+        enable = true,
+      },
+    },
+  },
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+    opts = function()
+      local conf = require "nvchad.configs.nvimtree"
+      conf.actions.open_file.quit_on_open = true
+      conf.renderer.icons.glyphs.git = {
+        unstaged = "󰏫",
+        staged = "✓",
+        unmerged = "",
+        renamed = "󰏫",
+        untracked = "󰙴",
+        deleted = "",
+        ignored = "◌"
+      }
+    end,
+  },
+
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    enabled = false,
+  },
+
+  {
+  	"williamboman/mason.nvim",
+  	opts = {
+  		ensure_installed = {
+        -- lua stuff
+        "lua-language-server",
+        "stylua",
+
+        -- web dev stuff
+        "css-lsp",
+        "html-lsp",
+        "typescript-language-server",
+        "svelte-language-server",
+        "deno",
+        "prettier",
+
+        -- php stuff
+       "intelephense",
+
+        -- c/cpp stuff
+        "clangd",
+        "clang-format",
+  		},
+  	},
+  },
   --
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
