@@ -23,6 +23,8 @@ vim.wo.number = false
 -- Disable swap files
 vim.opt.swapfile = false
 
+vim.opt.clipboard = ""
+
 vim.schedule(function()
   vim.opt.showtabline = 0
 end)

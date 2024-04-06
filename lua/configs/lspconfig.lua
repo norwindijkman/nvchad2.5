@@ -8,6 +8,7 @@ local servers = { "html", "cssls", "tsserver", "clangd", "intelephense", "marksm
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
+  print(lsp)
   lspconfig[lsp].setup {
     on_attach = on_attach,
     on_init = on_init,

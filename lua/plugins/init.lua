@@ -1,9 +1,30 @@
 return {
   {
+    "nvim-telescope/telescope.nvim",
+    opts = function()
+      local conf = require "nvchad.configs.telescope"
+      local telescope_harpoon = require('custom.telescope_harpoon')
+
+      conf.defaults.mappings.i = {
+        ["<TAB>"] = telescope_harpoon.mark_file,
+      }
+      return conf
+    end,
+  },
+
+  {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre' -- uncomment for format on save
     config = function()
       require "configs.conform"
+    end,
+  },
+
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require("nvchad.configs.lspconfig").defaults()
+      require "configs.lspconfig"
     end,
   },
 
@@ -31,6 +52,7 @@ return {
         changedelete = { text = "~" },
         untracked = { text = "󰙴" },
       }
+      return conf
     end,
   },
 

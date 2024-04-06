@@ -2,6 +2,33 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
+-- Normal mode mappings
+vim.keymap.set('n', 'y', '"+y', {noremap = true})
+vim.keymap.set('n', 'yy', '"+yy', {noremap = true})
+vim.keymap.set('n', 'Y', '"+Y', {noremap = true})
+vim.keymap.set('n', 'p', '"+p', {noremap = true})
+vim.keymap.set('n', 'P', '"+P', {noremap = true})
+vim.keymap.set('n', ']p', '"+]p', {noremap = true})
+vim.keymap.set('n', ']P', '"+]P', {noremap = true})
+vim.keymap.set('n', '[p', '"+[p', {noremap = true})
+vim.keymap.set('n', '[P', '"+[P', {noremap = true})
+vim.keymap.set('n', 'gp', '"+gp', {noremap = true})
+vim.keymap.set('n', 'gP', '"+gP', {noremap = true})
+
+-- Visual mode mappings
+vim.keymap.set('v', 'y', '"+y', {noremap = true})
+vim.keymap.set('v', 'Y', '"+Y', {noremap = true})
+vim.keymap.set('v', 'p', '"+p', {noremap = true})
+vim.keymap.set('v', 'P', '"+P', {noremap = true})
+
+-- Operator-pending mode mappings (for yanking with motions)
+vim.keymap.set('o', 'y', '"+y', {noremap = true})
+
+map('n', '<C-c>', ':nohlsearch<CR><Esc>', { desc = "Exit" })
+map('v', '<C-c>', ':nohlsearch<CR><Esc>', { desc = "Exit" })
+map('i', '<C-c>', '<Esc>:nohlsearch<CR>', { desc = "Exit" })
+map('c', '<C-c>', '<C-c>:nohlsearch<CR>', { desc = "Exit" })
+
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("n", "<C-n>", "<cmd> NvimTreeClose <CR>", { desc = "Close nvimtree" })
 map("v", ">", ">gv", { desc = "Indent forward" })
@@ -32,7 +59,7 @@ map("n", "<leader>h", function()
 end, { desc = "Toggle harpoon" })
 map("n", "<leader>a", function()
   local harpoon = require("harpoon")
-  harpoon:list():append()
+  harpoon:list():add()
 end, { desc = "Toggle add current buffer" })
 map("n", "<leader>1", function()
   local harpoon = require("harpoon")
