@@ -13,6 +13,15 @@ return {
   },
 
   {
+    "nvim-tree/nvim-tree.lua",
+    opts = function()
+      local conf = require "nvchad.configs.nvimtree"
+      conf.view.width = 9999
+      return conf
+    end,
+  },
+
+  {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre' -- uncomment for format on save
     config = function()
@@ -128,14 +137,4 @@ return {
   		},
   	},
   },
-  --
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
 }

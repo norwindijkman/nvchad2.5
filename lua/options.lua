@@ -102,20 +102,6 @@ local function make_recent()
 end
 vim.api.nvim_create_user_command('MR', make_recent, {})
 
--- Toggle nvim-tree width between wide / thin view
-local function toggle_nvim_tree_width()
-  local view = require('nvim-tree.view')
-  local standard_width = 30
-  local wide_width = 60
-
-  if view.View.width == standard_width then
-    view.resize(wide_width)
-  else
-    view.resize(standard_width)
-  end
-end
-vim.api.nvim_create_user_command('ToggleNvimTreeWidth', toggle_nvim_tree_width, {})
-
 -- quickly navigte in the current buffer
 local function go_to_next_file_in_dir(n)
     local current_file = vim.fn.expand('%:p')
