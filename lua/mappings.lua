@@ -24,6 +24,22 @@ vim.keymap.set("v", "P", '"+P', { noremap = true })
 -- Operator-pending mode mappings (for yanking with motions)
 vim.keymap.set("o", "y", '"+y', { noremap = true })
 
+-- GitSigns navigation
+map('n', ']c', function()
+  if vim.wo.diff then
+    vim.cmd.normal({']c', bang = true})
+  else
+    require('gitsigns').nav_hunk('next')
+  end
+end)
+map('n', '[c', function()
+  if vim.wo.diff then
+    vim.cmd.normal({'[c', bang = true})
+  else
+    require('gitsigns').nav_hunk('prev')
+  end
+end)
+
 map("n", "<C-c>", ":nohlsearch<CR><Esc>", { desc = "Exit" })
 map("v", "<C-c>", ":nohlsearch<CR><Esc>", { desc = "Exit" })
 map("i", "<C-c>", "<Esc>:nohlsearch<CR>", { desc = "Exit" })

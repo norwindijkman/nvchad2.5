@@ -61,6 +61,7 @@ return {
         changedelete = { text = "~" },
         untracked = { text = "󰙴" },
       }
+      conf.current_line_blame = true
       return conf
     end,
   },
