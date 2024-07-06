@@ -37,3 +37,21 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+
+
+local lspconfig = require'lspconfig'
+
+-- This function attaches a given LSP to the current buffer
+function attach_lsp(lsp)
+    lspconfig[lsp].setup{}
+    local bufnr = vim.api.nvim_get_current_buf()
+    local clients = vim.lsp.buf_get_clients(bufnr)
+    if not clients[1] then
+        vim.lsp.start_client({
+            name = lsp,
+            cmd = { lsp },
+            root_dir = vim.loop.cwd()
+        })
+        vim.lsp.buf_attach_client(bufnr, 1)
+    end
+end

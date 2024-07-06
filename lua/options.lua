@@ -56,6 +56,20 @@ vim.api.nvim_create_user_command('GrepInNvimTreeFolder', grep_in_nvim_tree_folde
 
 local function make_recent()
   local filepath = vim.fn.expand('%:p')
+  local bufname = vim.fn.bufname()
+  -- Check if current buffer is from nvim-tree
+  if bufname:match("NvimTree_") then
+    local nimvTree = require "nvim-tree.api"
+    local node = nimvTree.tree.get_node_under_cursor()
+    if node and node.type == "directory" then
+      return
+    elseif node and node.type == "file" then
+      filepath = node.absolute_path
+    else
+      return
+    end
+  end
+  print(filepath)
   local uri = 'file://' .. filepath
   local timestamp = os.date("!%Y-%m-%dT%H:%M:%SZ")
   local dateCmd = "date --iso-8601=seconds"

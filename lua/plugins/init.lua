@@ -3,7 +3,7 @@ return {
     "nvim-telescope/telescope.nvim",
     opts = function()
       local conf = require "nvchad.configs.telescope"
-      local telescope_harpoon = require('custom.telescope_harpoon')
+      local telescope_harpoon = require "custom.telescope_harpoon"
 
       conf.defaults.mappings.i = {
         ["<TAB>"] = telescope_harpoon.mark_file,
@@ -43,8 +43,8 @@ return {
     event = "VeryLazy",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      local harpoon = require("harpoon")
-      harpoon:setup({})
+      local harpoon = require "harpoon"
+      harpoon:setup {}
     end,
   },
 
@@ -67,7 +67,7 @@ return {
   },
 
   {
-  	"nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
         "vim",
@@ -82,7 +82,8 @@ return {
         "php",
         "markdown",
         "markdown_inline",
-        "dart"
+        "dart",
+        "java",
       },
       indent = {
         enable = true,
@@ -103,7 +104,7 @@ return {
         renamed = "󰏫",
         untracked = "󰙴",
         deleted = "",
-        ignored = "◌"
+        ignored = "◌",
       }
     end,
   },
@@ -114,9 +115,9 @@ return {
   },
 
   {
-  	"williamboman/mason.nvim",
-  	opts = {
-  		ensure_installed = {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
         -- lua stuff
         "lua-language-server",
         "stylua",
@@ -129,13 +130,24 @@ return {
         "deno",
         "prettier",
 
+        -- java stuff
+        "jdtls",
+
         -- php stuff
-       "intelephense",
+        "phpactor",
+        "twiggy-language-server",
 
         -- c/cpp stuff
         "clangd",
         "clang-format",
-  		},
-  	},
+      },
+    },
+  },
+
+  {
+    "L3MON4D3/LuaSnip",
+    config = function()
+      require("luasnip.loaders.from_snipmate").lazy_load { paths = vim.fn.stdpath "config" .. "/snippets" }
+    end,
   },
 }
