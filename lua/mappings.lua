@@ -40,6 +40,50 @@ map('n', '[c', function()
   end
 end)
 
+-- nvchad ui term 
+map({ "n", "t" }, "<A-i>", function()
+  require("nvchad.term").toggle {
+    id = "floatTerm",
+    pos = "float",
+    float_opts = {
+      relative = "editor",
+      row = 0,
+      col = 0,
+      width = 1,
+      height = .95,
+      border = "none",
+    },
+  }
+end, { desc = "Terminal Toggle Floating term" })
+map({ "n", "t" }, "<A-v>", function()
+  require("nvchad.term").toggle {
+    id = "vtoggleTerm",
+    pos = "float",
+    float_opts = {
+      relative = "editor",
+      row = 0,
+      col = 0,
+      width = 1,
+      height = .95,
+      border = "none",
+    },
+  }
+end, { desc = "terminal toggleable vertical term" })
+map({ "n", "t" }, "<A-h>", function()
+  require("nvchad.term").toggle {
+    id = "htoggleTerm",
+    pos = "float",
+    float_opts = {
+      relative = "editor",
+      row = 0,
+      col = 0,
+      width = 1,
+      height = .95,
+      border = "none",
+    },
+  }
+end, { desc = "terminal new horizontal term" })
+
 map("n", "<C-c>", ":nohlsearch<CR><Esc>", { desc = "Exit" })
 map("v", "<C-c>", ":nohlsearch<CR><Esc>", { desc = "Exit" })
 map("i", "<C-c>", "<Esc>:nohlsearch<CR>", { desc = "Exit" })

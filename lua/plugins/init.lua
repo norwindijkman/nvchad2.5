@@ -80,6 +80,7 @@ return {
         "tsx",
         "c",
         "php",
+        "twig",
         "markdown",
         "markdown_inline",
         "dart",
@@ -135,7 +136,8 @@ return {
 
         -- php stuff
         "phpactor",
-        "twiggy-language-server",
+        "twiggy_language_server",
+        "twig-cs-fixer",
 
         -- c/cpp stuff
         "clangd",
