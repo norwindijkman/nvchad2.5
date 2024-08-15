@@ -30,6 +30,11 @@ return {
   },
 
   {
+    "mbbill/undotree",
+    lazy = false,
+  },
+
+  {
     "neovim/nvim-lspconfig",
     config = function()
       require("nvchad.configs.lspconfig").defaults()

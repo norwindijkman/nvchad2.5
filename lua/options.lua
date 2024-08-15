@@ -1,5 +1,8 @@
 require "nvchad.options"
 
+vim.opt.shortmess:append("F")
+vim.opt.cmdheight = 2
+
 -- Set line wrap on
 vim.wo.wrap = false
 function ToggleWrap()
