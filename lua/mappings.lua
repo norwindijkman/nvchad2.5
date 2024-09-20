@@ -41,7 +41,7 @@ map('n', '[c', function()
 end)
 
 -- nvchad ui term 
-map({ "n", "t" }, "<A-i>", function()
+map({ "n", "t" }, "<A-/>", function()
   require("nvchad.term").toggle {
     id = "floatTerm",
     pos = "float",
@@ -55,7 +55,7 @@ map({ "n", "t" }, "<A-i>", function()
     },
   }
 end, { desc = "Terminal Toggle Floating term" })
-map({ "n", "t" }, "<A-v>", function()
+map({ "n", "t" }, "<A-.>", function()
   require("nvchad.term").toggle {
     id = "vtoggleTerm",
     pos = "float",
@@ -69,7 +69,7 @@ map({ "n", "t" }, "<A-v>", function()
     },
   }
 end, { desc = "terminal toggleable vertical term" })
-map({ "n", "t" }, "<A-h>", function()
+map({ "n", "t" }, "<A-,>", function()
   require("nvchad.term").toggle {
     id = "htoggleTerm",
     pos = "float",
@@ -99,17 +99,27 @@ map("n", "<A-j>", "4j", { desc = "Move down 4 lines" })
 map("n", "<A-k>", "4k", { desc = "Move up 4 lines" })
 map("v", "<A-j>", "4j", { desc = "Move down 4 lines in visual mode" })
 map("v", "<A-k>", "4k", { desc = "Move up 4 lines in visual mode" })
+map("n", "<A-l>", "4l", { desc = "Move right 4 lines" })
+map("n", "<A-h>", "4h", { desc = "Move left 4 lines" })
+map("v", "<A-l>", "4l", { desc = "Move right 4 lines in visual mode" })
+map("v", "<A-h>", "4h", { desc = "Move left 4 lines in visual mode" })
 
-map("n", "<C-A-j>", "16j", { desc = "Move down 16 lines" })
-map("n", "<C-A-k>", "16k", { desc = "Move up 16 lines" })
-map("v", "<C-A-j>", "16j", { desc = "Move down 16 lines in visual mode" })
-map("v", "<C-A-k>", "16k", { desc = "Move up 16 lines in visual mode" })
+map("n", "<S-A-j>", "16j", { desc = "Move down 16 lines" })
+map("n", "<S-A-k>", "16k", { desc = "Move up 16 lines" })
+map("v", "<S-A-j>", "16j", { desc = "Move down 16 lines in visual mode" })
+map("v", "<S-A-k>", "16k", { desc = "Move up 16 lines in visual mode" })
+map("n", "<S-A-l>", "16l", { desc = "Move right 16 lines" })
+map("n", "<S-A-h>", "16h", { desc = "Move left 16 lines" })
+map("v", "<S-A-l>", "16l", { desc = "Move right 16 lines in visual mode" })
+map("v", "<S-A-h>", "16h", { desc = "Move left 16 lines in visual mode" })
 
 map("n", "<Leader>cn", "<cmd>CreateDateFile<CR>", { desc = "Create a new file with the current date" })
 map("n", "<leader>pp", "<cmd>GrepInNvimTreeFolder<CR>", { desc = "Grep in NvimTree folder" })
 
 map("n", "<Leader>]", "<cmd>NextFile<CR>", { desc = "Go to next file" })
 map("n", "<Leader>[", "<cmd>PrevFile<CR>", { desc = "Go to previous file" })
+
+map("n", "<leader>fj", ":%!jq .<CR>", { desc = "Format JSON" })
 
 -- Harpoon
 map("n", "<leader>h", function()
